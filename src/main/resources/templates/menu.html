@@ -7,9 +7,19 @@
 </head>
 <body>
 <h1>My Super Fancy Spa</h1>
+<h2>My Profile</h2>
 <div id = "clientProfile">
+    <p th:text = "${name}"></p>
+    <p th:text = "${skintype}"></p>
+    <p th:text = "${manipedi}"></p>
 </div>
 <div id = "servicesMenu">
+    <th:block>
+        <h3>Facials</h3>
+        <p th:each="facial : ${appropriateFacials}" th:text = "${facial}"></p>
+    </th:block>
+    <th:block th:if = '${manipedi.equals("manicure")}'><h3>Manicure</h3><div th:replace = "fragments :: manicureDescription" > </div></th:block>
+    <th:block th:if = '${manipedi.equals("pedicure")}'><h3>Pedicure</h3><div th:replace = "fragments :: pedicureDescription" > </div></th:block>
 </div>
 </body>
 </html>
